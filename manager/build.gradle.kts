@@ -82,13 +82,8 @@ afterEvaluate {
 }
 
 dependencies {
-    implementation(lspatch.androidx.compose.ui)
-    implementation(lspatch.androidx.compose.ui.tooling.preview)
-    implementation(lspatch.androidx.compose.material)
-    implementation(lspatch.androidx.activity.compose)
     implementation(lspatch.androidx.compose.runtime)
     implementation(lspatch.androidx.compose.foundation)
-    implementation(lspatch.androidx.lifecycle.viewmodel.compose)
     implementation(projects.patch)
     implementation(projects.services.daemonService)
     implementation(projects.share.android)
