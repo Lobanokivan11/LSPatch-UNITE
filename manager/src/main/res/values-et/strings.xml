@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">Lisama</string>
     <string name="install">Installige</string>
@@ -14,7 +14,7 @@
     <string name="screen_logs">Palgid</string>
     <string name="off">Väljas</string>
     <string name="error_unknown">Teadmata viga</string>
-    <!-- Home Screen -->
+    
     <string name="home_shizuku_warning">Mõned funktsioonid pole saadaval</string>
     <string name="home_api_version">API versioon</string>
     <string name="home_lspatch_version">LSPatchi versioon</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">Kopeeriti lõikelauale</string>
     <string name="home_support">Toetus</string>
     <string name="home_description">LSPatch on tasuta mittejuur-Xposedi raamistik, mis põhineb LSPosedi tuumal.</string>
-    <string name="home_view_source_code"><![CDATA[Vaadake lähtekoodi aadressil %1$s<br/>Liituge meie %2$s kanaliga]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">Vaadake lähtekoodi aadressil %1$s&lt;br/&gt;Liituge meie %2$s kanaliga</string>
+    
     <string name="screen_manage">Halda</string>
     <string name="manage_loading">Laadimine</string>
     <string name="manage_no_apps">Paigutatud rakendusi pole veel</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">Mooduleid veel pole</string>
     <string name="manage_module_settings">Mooduli seaded</string>
     <string name="manage_app_info">Rakenduse teave</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">Uus plaaster</string>
     <string name="patch_select_dir_title">Valige salvestuskataloog</string>
     <string name="patch_select_dir_text">Valige kataloog, kuhu paigatud APK-d salvestada</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">Installimine õnnestus</string>
     <string name="patch_install_failed">Install ebaõnnestus</string>
     <string name="patch_no_xposed_module">Xposed moodul(id) ei leitud</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">Valige Rakendused</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">Seaded</string>
     <string name="settings_keystore">Allkirja võtmehoidla</string>
     <string name="settings_keystore_default">Sisseehitatud</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Vale pseudonüümi nimi</string>
     <string name="settings_keystore_wrong_alias_password">Vale aliase parool</string>
     <string name="settings_detail_patch_logs">Üksikasjade paikade logid</string>
+<string name="patch_inject_dex">Inject loader dex</string>
+    <string name="patch_inject_dex_desc">Eraldatud teenustega rakenduste puhul (nt brauserite renderdusmootorid) lülitage see valik sisse, et tagada nende õige töö.</string>
 </resources>
