@@ -23,30 +23,6 @@ jobs:
         submodules: 'recursive'
         fetch-depth: 0
 
-    - name: Write key
-      if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-      run: |
-        if [ ! -z "${{ secrets.KEY_STORE }}" ]; then
-          echo androidStorePassword='${{ secrets.KEY_STORE_PASSWORD }}' >> gradle.properties
-          echo androidKeyAlias='${{ secrets.ALIAS }}' >> gradle.properties
-          echo androidKeyPassword='${{ secrets.KEY_PASSWORD }}' >> gradle.properties
-          echo androidStoreFile='key.jks' >> gradle.properties
-          echo ${{ secrets.KEY_STORE }} | base64 --decode > key.jks
-        fi
-
-    - name: Checkout libxposed/api
-      uses: actions/checkout@main
-      with:
-        repository: libxposed/api
-        path: libxposed/api
-        ref: 54582730315ba4a3d7cfaf9baf9d23c419e07006
-
-    - name: Checkout libxposed/service
-      uses: actions/checkout@main
-      with:
-        repository: libxposed/service
-        path: libxposed/service
-
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
@@ -72,10 +48,8 @@ jobs:
       working-directory: libxposed
       run: |
         cd api
-        echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
         ./gradlew :api:publishApiPublicationToMavenLocal
         cd ../service
-        echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
         ./gradlew :interface:publishInterfacePublicationToMavenLocal
 
     - name: Set short commit id
@@ -83,11 +57,6 @@ jobs:
 
     - name: Build core with Gradle
       run: |
-        {
-          echo 'org.gradle.parallel=true'
-          echo 'org.gradle.jvmargs=-Xmx2048m'
-          echo 'android.native.buildOutput=verbose'
-        } >> gradle.properties
         ./gradlew buildAll
 
     - name: Upload Debug artifact
