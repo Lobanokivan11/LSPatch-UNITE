@@ -21,10 +21,6 @@ Note: debug builds are only available in Github Actions
 1. Download and install `manager.apk` on an Android device
 2. Follow the instructions of the manager app
 
-## Translation Contributing
-
-You can contribute translation [here](https://crowdin.com/project/lspatch_jingmatrix).
-
 ## Credits
 
 - [LSPosed](https://github.com/JingMatrix/LSPosed): Core framework
