@@ -6,6 +6,8 @@
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
         android:name=".LSPApplication"
@@ -35,6 +37,10 @@
 
         <service
             android:name=".manager.ModuleService"
+            android:exported="true" />
+
+        <service
+            android:name=".manager.LogService"
             android:exported="true" />
 
         <provider
