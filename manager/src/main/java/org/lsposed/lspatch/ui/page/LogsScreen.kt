@@ -16,19 +16,23 @@ import android.os.Environment
 import android.util.Log
 import java.io.File
 import java.io.IOException
+import androidx.compose.material3.TopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination
 @Composable
-fun LogsScreen(context: Context = LocalContext.current) {
-    val file = File(Environment.getExternalStorageDirectory() + "/Android/media/org.lsposed.lspatch/log/lsp.log")
-    var logEntries by remember { mutableStateOf(listOf<String>()) }
+fun LogsScreen() {
+    val context = LocalContext.current
+    val file = File(Environment.getExternalStorageDirectory(), "Android/media/org.lsposed.lspatch/log/lsp.log")
+    var logEntries by remember { mutableStateOf<List<String>>(emptyList()) }
 
-    LaunchedEffect(Unit) {
+    DisposableEffect {
         logEntries = readLogFile(context, file)
     }
 
-    Scaffold(topBar = { TopAppBar(title = { Text("Logs") }) }) { padding ->
+    Scaffold(
+        topBar = { CenterTopBar(title = { Text("Logs") }) }
+    ) { padding ->
         LazyColumn(modifier = Modifier.padding(padding)) {
             items(logEntries) { log ->
                 Text(
@@ -41,12 +45,12 @@ fun LogsScreen(context: Context = LocalContext.current) {
     }
 }
 
-
-fun readLogFile(context: Context, fileName: String): List<String> {
-    val file = File(Environment.getExternalStorageDirectory() + "/Android/media/org.lsposed.lspatch/log/lsp.log")
-    return if (file.exists()) {
-        file.readLines()
-    } else {
+fun readLogFile(context: Context, file: File): List<String> {
+    return try {
+        if (file.exists()) file.readLines() else emptyList()
+    } catch (e: IOException) {
+        Log.e("LogsScreen", "Error reading log file", e)
         emptyList()
     }
 }
+
