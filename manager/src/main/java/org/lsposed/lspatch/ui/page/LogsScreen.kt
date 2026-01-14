@@ -26,7 +26,7 @@ fun LogsScreen() {
     val file = File(Environment.getExternalStorageDirectory(), "Android/media/org.lsposed.lspatch/log/lsp.log")
     var logEntries by remember { mutableStateOf<List<String>>(emptyList()) }
 
-    DisposableEffect {
+    LaunchedEffect(Unit) {
         logEntries = readLogFile(context, file)
     }
 
@@ -53,4 +53,3 @@ fun readLogFile(context: Context, file: File): List<String> {
         emptyList()
     }
 }
-
