@@ -39,10 +39,6 @@
             android:name=".manager.ModuleService"
             android:exported="true" />
 
-        <service
-            android:name=".manager.LogService"
-            android:exported="true" />
-
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
             android:authorities="org.lsposed.lspatch.shizuku"

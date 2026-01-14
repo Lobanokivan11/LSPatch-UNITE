@@ -11,45 +11,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.ramcosta.composedestinations.annotation.Destination
 import org.lsposed.lspatch.ui.component.CenterTopBar
-import android.content.Context
-import android.os.Environment
-import android.util.Log
-import java.io.File
-import java.io.IOException
-import androidx.compose.material3.TopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination
 @Composable
 fun LogsScreen() {
-    val context = LocalContext.current
-    val file = File(Environment.getExternalStorageDirectory(), "Android/media/org.lsposed.lspatch/log/lsp.log")
-    var logEntries by remember { mutableStateOf<List<String>>(emptyList()) }
-
-    LaunchedEffect(Unit) {
-        logEntries = readLogFile(context, file)
-    }
-
     Scaffold(
-        topBar = { CenterTopBar(title = { Text("Logs") }) }
-    ) { padding ->
-        LazyColumn(modifier = Modifier.padding(padding)) {
-            items(logEntries) { log ->
-                Text(
-                    text = log,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(8.dp)
-                )
-            }
-        }
-    }
-}
-
-fun readLogFile(context: Context, file: File): List<String> {
-    return try {
-        if (file.exists()) file.readLines() else emptyList()
-    } catch (e: IOException) {
-        Log.e("LogsScreen", "Error reading log file", e)
-        emptyList()
+        topBar = { CenterTopBar(stringResource(BottomBarDestination.Logs.label)) }
+    ) { innerPadding ->
+        Text(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            text = "This page is not yet implemented",
+            textAlign = TextAlign.Center
+        )
     }
 }
