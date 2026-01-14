@@ -48,8 +48,10 @@ jobs:
       working-directory: libxposed
       run: |
         cd api
+        chmod 777 ./gradlew
         ./gradlew :api:publishApiPublicationToMavenLocal
         cd ../service
+        chmod 777 ./gradlew
         ./gradlew :interface:publishInterfacePublicationToMavenLocal
 
     - name: Set short commit id
@@ -57,6 +59,7 @@ jobs:
 
     - name: Build core with Gradle
       run: |
+        chmod 777 ./gradlew
         ./gradlew buildAll
 
     - name: Upload Debug artifact
