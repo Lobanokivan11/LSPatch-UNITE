@@ -82,12 +82,19 @@ afterEvaluate {
 }
 
 dependencies {
+    implementation(lspatch.androidx.compose.ui)
+    implementation(lspatch.androidx.compose.ui.tooling.preview)
+    implementation(lspatch.androidx.compose.material)
+    implementation(lspatch.androidx.activity.compose)
+    implementation(lspatch.androidx.compose.runtime)
+    implementation(lspatch.androidx.compose.foundation)
+    implementation(lspatch.androidx.lifecycle.viewmodel.compose)
     implementation(projects.patch)
     implementation(projects.services.daemonService)
     implementation(projects.share.android)
     implementation(projects.share.java)
     implementation(platform(lspatch.androidx.compose.bom))
-
+    implementation(platform("androidx.compose:compose-bom:2024.06.00"))
     annotationProcessor(lspatch.androidx.room.compiler)
     compileOnly(lspatch.rikka.hidden.stub)
     debugImplementation(lspatch.androidx.compose.ui.tooling)

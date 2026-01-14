@@ -10,6 +10,8 @@ ksp = "2.3.2"
 commons-io = "2.20.0"
 beust-jcommander = "1.82"
 google-gson = "2.13.1"
+androidx-activity-compose = "1.9.0"
+androidx-lifecycle-viewmodel-compose = "2.8.0" 
 
 [plugins]
 google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
@@ -59,3 +61,10 @@ commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 beust-jcommander = { module = "com.beust:jcommander", version.ref = "beust-jcommander" }
 
 google-gson = { module = "com.google.code.gson:gson", version.ref = "google-gson" }
+
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }            androidx-compose-material = { group = "androidx.compose.material", name = "material" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-compose" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle-viewmodel-compose" }
