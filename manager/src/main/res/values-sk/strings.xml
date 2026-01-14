@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">Pridať</string>
     <string name="install">Inštalácia</string>
@@ -14,7 +14,7 @@
     <string name="screen_logs">Denníky</string>
     <string name="off">Vypnuté</string>
     <string name="error_unknown">Neznáma chyba</string>
-    <!-- Home Screen -->
+    
     <string name="home_shizuku_warning">Niektoré funkcie sú nedostupné</string>
     <string name="home_api_version">Verzia API</string>
     <string name="home_lspatch_version">Verzia LSPatch</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">Skopírované do schránky</string>
     <string name="home_support">podpora</string>
     <string name="home_description">LSPatch je bezplatný rámec Xposed bez rootov založený na jadre LSPosed.</string>
-    <string name="home_view_source_code"><![CDATA[Zobraziť zdrojový kód na %1$s<br/>Pripojte sa k nášmu %2$s kanálu]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">Zobraziť zdrojový kód na %1$s&lt;br/&gt;Pripojte sa k nášmu %2$s kanálu</string>
+    
     <string name="screen_manage">Spravovať</string>
     <string name="manage_loading">Načítava</string>
     <string name="manage_no_apps">Zatiaľ žiadne opravené aplikácie</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">Zatiaľ žiadne moduly</string>
     <string name="manage_module_settings">Nastavenia modulu</string>
     <string name="manage_app_info">Informácie o aplikácii</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">Nový Patch</string>
     <string name="patch_select_dir_title">Vyberte priečinok úložiska</string>
     <string name="patch_select_dir_text">Vyberte adresár, do ktorého chcete uložiť opravené súbory APK</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">Nainštalujte úspešne</string>
     <string name="patch_install_failed">Inštalácia zlyhala</string>
     <string name="patch_no_xposed_module">Neboli nájdené žiadne moduly Xposed</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">Vyberte položku Aplikácie</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">nastavenie</string>
     <string name="settings_keystore">Úložisko podpisových kľúčov</string>
     <string name="settings_keystore_default">Vstavaný</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Nesprávny alias</string>
     <string name="settings_keystore_wrong_alias_password">Nesprávne heslo aliasu</string>
     <string name="settings_detail_patch_logs">Podrobné protokoly o opravách</string>
+<string name="patch_inject_dex">Inject loader dex</string>
+    <string name="patch_inject_dex_desc">Pre aplikácie s izolovanými službami, ako sú napríklad vykresľovacie nástroje prehliadačov, zapnite túto možnosť, aby ste sa uistili, že fungujú správne.</string>
 </resources>

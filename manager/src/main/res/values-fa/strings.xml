@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">افزودن</string>
     <string name="install">نصب</string>
@@ -13,8 +13,8 @@
     <string name="screen_repo">مخزن</string>
     <string name="screen_logs">گزارش ها</string>
     <string name="off">خاموش</string>
-    <string name="error_unknown"></string>
-    <!-- Home Screen -->
+    <string name="error_unknown" />
+    
     <string name="home_shizuku_warning">برخی از عملکردها در دسترس نیستند</string>
     <string name="home_api_version">نسخه API</string>
     <string name="home_lspatch_version">نسخه LSPatch</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">در کلیپ بورد کپی شده</string>
     <string name="home_support">حمایت</string>
     <string name="home_description">LSPatch یک فریمورک Xposed بدون نیاز به روت رایگان بر اساس هسته LSPosed است</string>
-    <string name="home_view_source_code"><![CDATA[کد منبع را در %1$s مشاهده کنید<br/>و به کانال %2$s ما بپیوندید]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">کد منبع را در %1$s مشاهده کنید&lt;br/&gt;و به کانال %2$s ما بپیوندید</string>
+    
     <string name="screen_manage">مدیریت</string>
     <string name="manage_loading">در حال بارگذاری ...</string>
     <string name="manage_no_apps">هنوز هیچ برنامه ای پچ نشده</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">هنوز ماژولی وجود ندارد</string>
     <string name="manage_module_settings">تنظیمات ماژول</string>
     <string name="manage_app_info">اطلاعات برنامه</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">پچ جدید</string>
     <string name="patch_select_dir_title">پوشه ذخیره سازی را انتخاب کنید</string>
     <string name="patch_select_dir_text">یک پوشه را برای ذخیره apk های پچ شده انتخاب کنید</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">نصب شده</string>
     <string name="patch_install_failed">نصب نشده</string>
     <string name="patch_no_xposed_module">هیچ ماژول(های) Xposed یافت نشد</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">برنامه ها را انتخاب کنید</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">تنظیمات</string>
     <string name="settings_keystore">فروشگاه کلید امضا</string>
     <string name="settings_keystore_default">ساخته شده در</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">نام مستعار اشتباه است</string>
     <string name="settings_keystore_wrong_alias_password">رمز یا نام مستعار اشتباه است</string>
     <string name="settings_detail_patch_logs">گزارش های اطلاعات پچ</string>
+<string name="patch_inject_dex">لودر dex تزریق کنید</string>
+    <string name="patch_inject_dex_desc">برای برنامه‌های دارای سرویس‌های مجزا، مانند موتورهای رندر مرورگرها، لطفاً این گزینه را روشن کنید تا مطمئن شوید که به درستی کار می‌کنند.</string>
 </resources>

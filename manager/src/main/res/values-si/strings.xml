@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">එකතු කරන්න</string>
     <string name="install">ස්ථාපනය කරන්න</string>
@@ -14,7 +14,7 @@
     <string name="screen_logs">සටහන්</string>
     <string name="off">අක්රියයි</string>
     <string name="error_unknown">නොදන්නා දෝෂයකි</string>
-    <!-- Home Screen -->
+    
     <string name="home_shizuku_warning">සමහර කාර්යයන් නොමැත</string>
     <string name="home_api_version">API අනුවාදය</string>
     <string name="home_lspatch_version">LSPatch අනුවාදය</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">පසුරු පුවරුවට පිටපත් කර ඇත</string>
     <string name="home_support">සහාය</string>
     <string name="home_description">LSPatch යනු LSPosed core මත පදනම් වූ නොමිලේ Root නොවන Xposed රාමුවකි.</string>
-    <string name="home_view_source_code"><![CDATA[මූල කේතය %1$s<br/>ට බලන්න අපගේ %2$s නාලිකාවට සම්බන්ධ වන්න]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">මූල කේතය %1$s&lt;br/&gt;ට බලන්න අපගේ %2$s නාලිකාවට සම්බන්ධ වන්න</string>
+    
     <string name="screen_manage">කළමනාකරණය කරන්න</string>
     <string name="manage_loading">පැටවීම</string>
     <string name="manage_no_apps">තවම පැච් කළ යෙදුම් නැත</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">තවම මොඩියුල නැත</string>
     <string name="manage_module_settings">මොඩියුල සැකසුම්</string>
     <string name="manage_app_info">යෙදුම් තොරතුරු</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">නව පැච්</string>
     <string name="patch_select_dir_title">ගබඩා නාමාවලිය තෝරන්න</string>
     <string name="patch_select_dir_text">පැච් කරන ලද apks ගබඩා කිරීමට නාමාවලියක් තෝරන්න</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">සාර්ථකව ස්ථාපනය කරන්න</string>
     <string name="patch_install_failed">ස්ථාපනය අසාර්ථක විය</string>
     <string name="patch_no_xposed_module">Xposed මොඩියුල(ය) හමු නොවිණි</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">යෙදුම් තෝරන්න</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">සැකසුම්</string>
     <string name="settings_keystore">අත්සන යතුරු ගබඩාව</string>
     <string name="settings_keystore_default">බිල්ට්-ඉන්</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">වැරදි අන්වර්ථ නාමයක්</string>
     <string name="settings_keystore_wrong_alias_password">වැරදි අන්වර්ථ මුරපදය</string>
     <string name="settings_detail_patch_logs">විස්තර පැච් ලොග</string>
+<string name="patch_inject_dex">ලෝඩර් ඩෙක්ස් එන්නත් කරන්න</string>
+    <string name="patch_inject_dex_desc">බ්‍රවුසරයේ විදැහුම් යන්ත්‍ර වැනි හුදකලා සේවා සහිත යෙදුම් සඳහා, ඒවා නිවැරදිව ක්‍රියා කරන බව සහතික කිරීමට කරුණාකර මෙම විකල්පය ක්‍රියාත්මක කරන්න.</string>
 </resources>

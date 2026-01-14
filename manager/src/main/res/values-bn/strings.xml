@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">যোগ করুন</string>
     <string name="install">ইনস্টল করুন</string>
@@ -14,7 +14,7 @@
     <string name="screen_logs">লগ</string>
     <string name="off">বন্ধ</string>
     <string name="error_unknown">অজানা ত্রুটি</string>
-    <!-- Home Screen -->
+    
     <string name="home_shizuku_warning">কিছু ফাংশন অনুপলব্ধ</string>
     <string name="home_api_version">API সংস্করণ</string>
     <string name="home_lspatch_version">এলএসপ্যাচ সংস্করণ</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">ক্লিপবোর্ডে কপি করা হয়েছে</string>
     <string name="home_support">সমর্থন</string>
     <string name="home_description">LSPatch হল LSPosed কোরের উপর ভিত্তি করে একটি বিনামূল্যের নন-রুট Xposed ফ্রেমওয়ার্ক।</string>
-    <string name="home_view_source_code"><![CDATA[%1$s<br/>এ সোর্স কোড দেখুন আমাদের %2$s চ্যানেলে যোগ দিন]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">%1$s&lt;br/&gt;এ সোর্স কোড দেখুন আমাদের %2$s চ্যানেলে যোগ দিন</string>
+    
     <string name="screen_manage">পরিচালনা করুন</string>
     <string name="manage_loading">লোড হচ্ছে</string>
     <string name="manage_no_apps">এখনো কোনো প্যাচড অ্যাপস</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">এখনো কোনো মডিউল নেই</string>
     <string name="manage_module_settings">মডিউল সেটিংস</string>
     <string name="manage_app_info">অ্যাপের তথ্য</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">নতুন প্যাচ</string>
     <string name="patch_select_dir_title">স্টোরেজ ডিরেক্টরি নির্বাচন করুন</string>
     <string name="patch_select_dir_text">প্যাচ করা apks সংরক্ষণ করতে একটি ডিরেক্টরি নির্বাচন করুন</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">সফলভাবে ইনস্টল করুন</string>
     <string name="patch_install_failed">ইনস্টল ব্যর্থ হয়েছে</string>
     <string name="patch_no_xposed_module">No Xposed module(s) were found</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">অ্যাপস নির্বাচন করুন</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">সেটিংস</string>
     <string name="settings_keystore">স্বাক্ষর কীস্টোর</string>
     <string name="settings_keystore_default">অন্তর্নির্মিত</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">ভুল উপনাম নাম</string>
     <string name="settings_keystore_wrong_alias_password">ভুল ওরফে পাসওয়ার্ড</string>
     <string name="settings_detail_patch_logs">বিস্তারিত প্যাচ লগ</string>
+<string name="patch_inject_dex">লোডার ডেক্স ইনজেক্ট করুন</string>
+    <string name="patch_inject_dex_desc">ব্রাউজারগুলির রেন্ডার ইঞ্জিনের মতো বিচ্ছিন্ন পরিষেবা সহ অ্যাপ্লিকেশনগুলির জন্য, তারা সঠিকভাবে কাজ করে তা নিশ্চিত করতে দয়া করে এই বিকল্পটি চালু করুন৷</string>
 </resources>

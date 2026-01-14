@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">Добавяне на</string>
     <string name="install">Инсталиране на</string>
@@ -14,7 +14,7 @@
     <string name="screen_logs">Дневници</string>
     <string name="off">Изключено</string>
     <string name="error_unknown">Неизвестна грешка</string>
-    <!-- Home Screen -->
+    
     <string name="home_shizuku_warning">Някои функции са недостъпни</string>
     <string name="home_api_version">Версия на API</string>
     <string name="home_lspatch_version">Версия на LSPatch</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">Копиране в клипборда</string>
     <string name="home_support">Подкрепа</string>
     <string name="home_description">LSPatch е безплатна некоренова рамка Xposed, базирана на ядрото LSPosed.</string>
-    <string name="home_view_source_code"><![CDATA[Преглед на изходния код в %1$s<br/>Присъединете се към нашия %2$s канал]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">Преглед на изходния код в %1$s&lt;br/&gt;Присъединете се към нашия %2$s канал</string>
+    
     <string name="screen_manage">Управление на</string>
     <string name="manage_loading">Зареждане на</string>
     <string name="manage_no_apps">Все още няма поправени приложения</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">Все още няма модули</string>
     <string name="manage_module_settings">Настройки на модула</string>
     <string name="manage_app_info">Информация за приложението</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">Нова кръпка</string>
     <string name="patch_select_dir_title">Изберете директория за съхранение</string>
     <string name="patch_select_dir_text">Изберете директория, в която да съхранявате поправените apks</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">Инсталирайте успешно</string>
     <string name="patch_install_failed">Инсталацията е неуспешна</string>
     <string name="patch_no_xposed_module">Не са открити модул(и) Xposed</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">Изберете приложения</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">Настройки</string>
     <string name="settings_keystore">Хранилище на ключове за подписване</string>
     <string name="settings_keystore_default">Вграден</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">Неправилно име на псевдоним</string>
     <string name="settings_keystore_wrong_alias_password">Грешна парола за псевдоним</string>
     <string name="settings_detail_patch_logs">Подробни дневници на кръпките</string>
+<string name="patch_inject_dex">Инжектирайте товарач dex</string>
+    <string name="patch_inject_dex_desc">За приложения с изолирани услуги, като двигателите за изобразяване на браузъри, моля, включете тази опция, за да сте сигурни, че работят правилно.</string>
 </resources>

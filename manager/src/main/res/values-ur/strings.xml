@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="add">شامل کریں۔ </string>
     <string name="install">Install</string>
@@ -14,7 +14,7 @@
     <string name="screen_logs">نوشتہ جات</string>
     <string name="off">بند</string>
     <string name="error_unknown">نامعلوم خامی</string>
-    <!-- Home Screen -->
+    
     <string name="home_shizuku_warning">کچھ فنکشنز دستیاب نہیں ہیں۔</string>
     <string name="home_api_version">API ورژن</string>
     <string name="home_lspatch_version">ایل ایس پیچ ورژن</string>
@@ -25,8 +25,8 @@
     <string name="home_info_copied">کلپ بورڈ پر کاپی ہو گیا۔</string>
     <string name="home_support">حمایت</string>
     <string name="home_description">LSPatch LSPosed کور پر مبنی ایک مفت نان روٹ Xposed فریم ورک ہے۔</string>
-    <string name="home_view_source_code"><![CDATA[%1$s<br/>پر سورس کوڈ دیکھیں ہمارے %2$s چینل میں شامل ہوں۔]]></string>
-    <!-- Manage Screen -->
+    <string name="home_view_source_code">%1$s&lt;br/&gt;پر سورس کوڈ دیکھیں ہمارے %2$s چینل میں شامل ہوں۔</string>
+    
     <string name="screen_manage">انتظام کریں۔</string>
     <string name="manage_loading">لوڈ ہو رہا ہے۔</string>
     <string name="manage_no_apps">ابھی تک کوئی پیچ شدہ ایپس نہیں ہیں۔</string>
@@ -42,7 +42,7 @@
     <string name="manage_no_modules">ابھی تک کوئی ماڈیولز نہیں ہیں۔</string>
     <string name="manage_module_settings">ماڈیول کی ترتیبات</string>
     <string name="manage_app_info">ایپ کی معلومات</string>
-    <!-- New Patch Screen -->
+    
     <string name="screen_new_patch">نیا پیچ</string>
     <string name="patch_select_dir_title">اسٹوریج ڈائرکٹری منتخب کریں۔</string>
     <string name="patch_select_dir_text">پیچ شدہ apks کو ذخیرہ کرنے کے لیے ایک ڈائریکٹری منتخب کریں۔</string>
@@ -68,9 +68,9 @@
     <string name="patch_install_successfully">کامیابی سے انسٹال کریں۔</string>
     <string name="patch_install_failed">انسٹال ناکام ہو گیا۔</string>
     <string name="patch_no_xposed_module">کوئی ایکس پوز ماڈیول نہیں ملا</string>
-    <!-- Select Apps Screen -->
+    
     <string name="screen_select_apps">ایپس کو منتخب کریں۔</string>
-    <!-- Settings Screen -->
+    
     <string name="screen_settings">ترتیبات</string>
     <string name="settings_keystore">دستخطی کی اسٹور</string>
     <string name="settings_keystore_default">بلٹ ان</string>
@@ -86,4 +86,6 @@
     <string name="settings_keystore_wrong_alias">غلط عرفی نام</string>
     <string name="settings_keystore_wrong_alias_password">غلط عرفی پاس ورڈ</string>
     <string name="settings_detail_patch_logs">تفصیلی پیچ لاگز</string>
+<string name="patch_inject_dex">انجیکشن لوڈر ڈیکس</string>
+    <string name="patch_inject_dex_desc">الگ تھلگ خدمات ، جیسے براؤزرز کے رینڈر انجنوں والی درخواستوں کے ل please ، براہ کرم اس اختیار کو آن کریں تاکہ یہ یقینی بنایا جاسکے کہ وہ صحیح طریقے سے کام کریں۔</string>
 </resources>
