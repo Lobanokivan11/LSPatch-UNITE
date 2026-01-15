@@ -43,10 +43,7 @@ import org.lsposed.lspatch.ui.page.destinations.NewPatchScreenDestination
 import org.lsposed.lspatch.ui.util.HtmlText
 import org.lsposed.lspatch.ui.util.LocalSnackbarHost
 import org.lsposed.lspatch.util.ShizukuApi
-import org.lsposed.lspatch.util.DhizukuApi
 import rikka.shizuku.Shizuku
-import com.rosan.dhizuku.api.Dhizuku
-import com.rosan.dhizuku.api.DhizukuRequestPermissionListener
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RootNavGraph(start = true)
@@ -84,7 +81,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             ShizukuCard()
-            DhizukuCard()
             InfoCard()
             SupportCard()
             Spacer(Modifier)
@@ -149,7 +145,7 @@ private fun ShizukuCard() {
                     )
                     Spacer(Modifier.height(4.dp))
                     Text(
-                        text = stringResource(R.string.home_warning),
+                        text = stringResource(R.string.home_shizuku_warning),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -157,73 +153,6 @@ private fun ShizukuCard() {
         }
     }
 }
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun DhizukuCard() {
-    val listener = object : DhizukuRequestPermissionListener() {
-        override fun onRequestPermission(result: Int) {
-            DhizukuApi.isPermissionGranted = (result == PackageManager.PERMISSION_GRANTED)
-        }
-    }
-
-    LaunchedEffect(Unit) {
-        DhizukuApi.init()
-    }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            // Dhizuku does not have a direct equivalent to Shizuku's removeRequestPermissionResultListener
-            // So just ensure you don't leak listeners in your activity/fragment
-        }
-    }
-
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = run {
-            if (DhizukuApi.isPermissionGranted) MaterialTheme.colorScheme.secondaryContainer
-            else MaterialTheme.colorScheme.errorContainer
-        })
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable {
-                    if (DhizukuApi.isBinderAvailable && !DhizukuApi.isPermissionGranted) {
-                        DhizukuApi.requestPermission(listener)
-                    }
-                }
-                .padding(24.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            if (DhizukuApi.isPermissionGranted) {
-                Icon(Icons.Outlined.CheckCircle, stringResource(R.string.dhizuku_available))
-                Column(Modifier.padding(start = 20.dp)) {
-                    Text(
-                        text = stringResource(R.string.dhizuku_available),
-                        fontFamily = FontFamily.Serif,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Spacer(Modifier.height(4.dp))
-                }
-            } else {
-                Icon(Icons.Outlined.Warning, stringResource(R.string.dhizuku_unavailable))
-                Column(Modifier.padding(start = 20.dp)) {
-                    Text(
-                        text = stringResource(R.string.dhizuku_unavailable),
-                        fontFamily = FontFamily.Serif,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Spacer(Modifier.height(4.dp))
-                    Text(
-                        text = stringResource(R.string.home_warning),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                }
-            }
-        }
-    }
-}
-
 
 private val apiVersion = if (Build.VERSION.PREVIEW_SDK_INT != 0) {
     "${Build.VERSION.CODENAME} Preview (API ${Build.VERSION.PREVIEW_SDK_INT})"

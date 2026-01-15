@@ -10,7 +10,6 @@ import org.lsposed.hiddenapibypass.HiddenApiBypass
 import org.lsposed.lspatch.manager.AppBroadcastReceiver
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.ShizukuApi
-import org.lsposed.lspatch.util.DhizukuApi
 import java.io.File
 
 lateinit var lspApp: LSPApplication
@@ -30,7 +29,6 @@ class LSPApplication : Application() {
         tmpApkDir = cacheDir.resolve("apk").also { it.mkdir() }
         prefs = lspApp.getSharedPreferences("settings", Context.MODE_PRIVATE)
         ShizukuApi.init()
-        DhizukuApi.init()
         AppBroadcastReceiver.register(this)
         globalScope.launch { LSPPackageManager.fetchAppList() }
     }
