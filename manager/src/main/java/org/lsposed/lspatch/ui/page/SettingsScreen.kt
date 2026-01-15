@@ -35,6 +35,12 @@ import org.lsposed.lspatch.ui.component.settings.SettingsSwitch
 import java.io.IOException
 import java.security.GeneralSecurityException
 import java.security.KeyStore
+import android.app.Activity
+import android.content.Intent
+import android.util.Log
+import org.lsposed.lspatch.ui.util.LocalSnackbarHost
+import org.lsposed.lspatch.ui.component.settings.SettingsSlot
+import androidx.compose.material.icons.outlined.Folder
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination
@@ -49,6 +55,7 @@ fun SettingsScreen() {
                 .verticalScroll(rememberScrollState())
         ) {
             KeyStore()
+            StorageDirectory()
             DetailPatchLogs()
         }
     }
@@ -239,4 +246,38 @@ private fun DetailPatchLogs() {
         icon = Icons.Outlined.BugReport,
         title = stringResource(R.string.settings_detail_patch_logs)
     )
+}
+
+@Composable
+private fun StorageDirectory() {
+    val context = LocalContext.current
+    val snackbarHost = LocalSnackbarHost.current
+    val scope = rememberCoroutineScope()
+    val errorText = stringResource(R.string.patch_select_dir_error)
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                try {
+                            if (it.resultCode == Activity.RESULT_CANCELED) return@rememberLauncherForActivityResult
+                    val uri = it.data?.data ?: throw IOException("No data")
+                    val takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                            context.contentResolver.takePersistableUriPermission(uri, takeFlags)
+                            Configs.storageDirectory = uri.toString()
+                            Log.i(TAG, "Storage directory: ${uri.path}")
+                } catch (e: Exception) {
+                            Log.e(TAG, "Error when requesting saving directory", e)
+                            scope.launch { snackbarHost.showSnackbar(errorText) }
+                }
+    }
+            AnywhereDropdown(
+                        expanded = false,
+                        onDismissRequest = { },
+                        onClick = {
+                            launcher.launch(Intent(Intent.ACTION_OPEN_DOCUMENT_TREE))
+                },
+                        surface = {
+                            SettingsItem(
+                                        title = stringResource(R.string.settings_storage_directory),
+                                        desc = Configs.storageDirectory ?: "undefined",
+                                        icon = Icons.Outlined.Folder
+                            )
+
 }
