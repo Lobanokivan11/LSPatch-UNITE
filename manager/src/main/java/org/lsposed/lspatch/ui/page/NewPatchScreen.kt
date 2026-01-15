@@ -43,6 +43,7 @@ import org.lsposed.lspatch.R
 import org.lsposed.lspatch.lspApp
 import org.lsposed.lspatch.ui.component.AnywhereDropdown
 import org.lsposed.lspatch.ui.component.SelectionColumn
+import org.lsposed.lspatch.ui.component.SelectionItem
 import org.lsposed.lspatch.ui.component.ShimmerAnimation
 import org.lsposed.lspatch.ui.component.settings.SettingsCheckBox
 import org.lsposed.lspatch.ui.component.settings.SettingsItem
@@ -410,7 +411,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                             .fillMaxWidth()
                             .heightIn(max = shellBoxMaxHeight)
                             .clip(RoundedCornerShape(32.dp))
-                            .background(brush)
+                            .background(MaterialTheme.colorScheme.surfaceVariant)
                             .padding(horizontal = 24.dp, vertical = 18.dp)
                     ) {
                         items(viewModel.logs) {
@@ -519,6 +520,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                 else -> Unit
             }
        }
+    }
 }
 
 @Composable
