@@ -104,6 +104,7 @@ dependencies {
     implementation(lspatch.androidx.lifecycle.viewmodel.compose)
     implementation(lspatch.androidx.navigation.compose)
     implementation(libs.androidx.preference)
+    implementation(lspatch.dhizuku)
     implementation(lspatch.androidx.room.ktx)
     implementation(lspatch.androidx.room.runtime)
     implementation(lspatch.google.accompanist.navigation.animation)

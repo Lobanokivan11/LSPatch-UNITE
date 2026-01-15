@@ -55,7 +55,10 @@ import org.lsposed.lspatch.ui.viewmodel.NewPatchViewModel.PatchState
 import org.lsposed.lspatch.ui.viewmodel.NewPatchViewModel.ViewAction
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.LSPPackageManager.AppInfo
+import org.lsposed.lspatch.util.LSPPackageManagerDhizuku
+import org.lsposed.lspatch.util.LSPPackageManagerDhizuku.AppInfo
 import org.lsposed.lspatch.util.ShizukuApi
+import org.lsposed.lspatch.util.DhizukuApi
 
 private const val TAG = "NewPatchPage"
 
@@ -431,6 +434,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
             when (viewModel.patchState) {
                 PatchState.PATCHING -> BackHandler {}
                 PatchState.FINISHED -> {
+                    val dhizukuUnavailable = stringResource(R.string.dhizuku_unavailable)
                     val shizukuUnavailable = stringResource(R.string.shizuku_unavailable)
                     val installSuccessfully = stringResource(R.string.patch_install_successfully)
                     val installFailed = stringResource(R.string.patch_install_failed)
@@ -451,13 +455,18 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                             }
                         }
                     }
-                    Row(Modifier.padding(top = 12.dp)) {
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
                         Button(
                             modifier = Modifier.weight(1f),
                             onClick = { navigator.navigateUp() },
                             content = { Text(stringResource(R.string.patch_return)) }
                         )
-                        Spacer(Modifier.weight(0.2f))
                         Button(
                             modifier = Modifier.weight(1f),
                             onClick = {
@@ -469,18 +478,35 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                                     installing = true
                                 }
                             },
-                            content = { Text(stringResource(R.string.install)) }
+                            content = { Text(stringResource(R.string.install_shizuku)) }
+                        )
+                        Button(
+                            modifier = Modifier.weight(1f),
+                            onClick = {
+                                if (!DhizukuApi.isPermissionGranted) {
+                                    scope.launch {
+                                        snackbarHost.showSnackbar(dhizukuUnavailable)
+                                    }
+                                } else {
+                                    installing = true
+                                }
+                            },
+                            content = { Text(stringResource(R.string.install_dhizuku)) }
                         )
                     }
                 }
                 PatchState.ERROR -> {
-                    Row(Modifier.padding(top = 12.dp)) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
                         Button(
                             modifier = Modifier.weight(1f),
                             onClick = { navigator.navigateUp() },
                             content = { Text(stringResource(R.string.patch_return)) }
                         )
-                        Spacer(Modifier.weight(0.2f))
                         Button(
                             modifier = Modifier.weight(1f),
                             onClick = {
@@ -493,12 +519,11 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
                 }
                 else -> Unit
             }
-        }
-    }
+       }
 }
 
 @Composable
-private fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
+private fun InstallDialogShizuku(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
     val scope = rememberCoroutineScope()
     var uninstallFirst by remember { mutableStateOf(ShizukuApi.isPackageInstalledWithoutPatch(patchApp.app.packageName)) }
     var installing by remember { mutableStateOf(0) }
@@ -543,6 +568,82 @@ private fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
             dismissButton = {
                 TextButton(
                     onClick = { onFinish(LSPPackageManager.STATUS_USER_CANCELLED, "User cancelled") },
+                    content = { Text(stringResource(android.R.string.cancel)) }
+                )
+            },
+            title = {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.uninstall),
+                    textAlign = TextAlign.Center
+                )
+            },
+            text = { Text(stringResource(R.string.patch_uninstall_text)) }
+        )
+    }
+
+    if (installing != 0) {
+        AlertDialog(
+            onDismissRequest = {},
+            confirmButton = {},
+            title = {
+                Text(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(if (installing == 1) R.string.installing else R.string.uninstalling),
+                    fontFamily = FontFamily.Serif,
+                    textAlign = TextAlign.Center
+                )
+            }
+        )
+    }
+}
+
+@Composable
+private fun InstallDialogDhizuku(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
+    val scope = rememberCoroutineScope()
+    var uninstallFirst by remember { mutableStateOf(DhizukuApi.isPackageInstalledWithoutPatch(patchApp.app.packageName)) }
+    var installing by remember { mutableStateOf(0) }
+    suspend fun doInstall() {
+        Log.i(TAG, "Installing app ${patchApp.app.packageName}")
+        installing = 1
+        val (status, message) = LSPPackageManagerDhizuku.install()
+        installing = 0
+        Log.i(TAG, "Installation end: $status, $message")
+        onFinish(status, message)
+    }
+
+    LaunchedEffect(Unit) {
+        if (!uninstallFirst) {
+            doInstall()
+        }
+    }
+
+    if (uninstallFirst) {
+        AlertDialog(
+            onDismissRequest = { onFinish(LSPPackageManagerDhizuku.STATUS_USER_CANCELLED, "User cancelled") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        scope.launch {
+                            Log.i(TAG, "Uninstalling app ${patchApp.app.packageName}")
+                            uninstallFirst = false
+                            installing = 2
+                            val (status, message) = LSPPackageManagerDhizuku.uninstall(patchApp.app.packageName)
+                            installing = 0
+                            Log.i(TAG, "Uninstallation end: $status, $message")
+                            if (status == PackageInstaller.STATUS_SUCCESS) {
+                                doInstall()
+                            } else {
+                                onFinish(status, message)
+                            }
+                        }
+                    },
+                    content = { Text(stringResource(android.R.string.ok)) }
+                )
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { onFinish(LSPPackageManagerDhizuku.STATUS_USER_CANCELLED, "User cancelled") },
                     content = { Text(stringResource(android.R.string.cancel)) }
                 )
             },

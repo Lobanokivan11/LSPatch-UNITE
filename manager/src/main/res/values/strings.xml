@@ -1,6 +1,7 @@
 <resources>
     <string name="add">Add</string>
-    <string name="install">Install</string>
+    <string name="install_shizuku">Install using Shizuku</string>
+    <string name="install_dhizuku">Install using Dhizuku</string>
     <string name="installing">Installing</string>
     <string name="uninstall">Uninstall</string>
     <string name="uninstalling">Uninstalling</string>
@@ -9,13 +10,15 @@
     <string name="modules">Modules</string>
     <string name="shizuku_available">Shizuku service available</string>
     <string name="shizuku_unavailable">Shizuku service not connected</string>
+    <string name="dhizuku_available">Dhizuku service available</string>
+    <string name="dhizuku_unavailable">Dhizuku service not connected</string>
     <string name="screen_repo">Repo</string>
     <string name="screen_logs">Logs</string>
     <string name="off">Off</string>
     <string name="error_unknown">Unknown error</string>
 
     <!-- Home Screen -->
-    <string name="home_shizuku_warning">Some functions unavailable</string>
+    <string name="home_warning">Some functions unavailable</string>
     <string name="home_api_version">API Version</string>
     <string name="home_lspatch_version">LSPatch UNITE Version</string>
     <string name="home_framework_version">Framework Version</string>

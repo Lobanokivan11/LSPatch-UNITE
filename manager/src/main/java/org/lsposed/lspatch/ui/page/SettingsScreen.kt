@@ -255,29 +255,22 @@ private fun StorageDirectory() {
     val scope = rememberCoroutineScope()
     val errorText = stringResource(R.string.patch_select_dir_error)
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                try {
-                            if (it.resultCode == Activity.RESULT_CANCELED) return@rememberLauncherForActivityResult
-                    val uri = it.data?.data ?: throw IOException("No data")
-                    val takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                            context.contentResolver.takePersistableUriPermission(uri, takeFlags)
-                            Configs.storageDirectory = uri.toString()
-                            Log.i(TAG, "Storage directory: ${uri.path}")
-                } catch (e: Exception) {
-                            Log.e(TAG, "Error when requesting saving directory", e)
-                            scope.launch { snackbarHost.showSnackbar(errorText) }
-                }
+        try {
+            if (it.resultCode == Activity.RESULT_CANCELED) return@rememberLauncherForActivityResult
+            val uri = it.data?.data ?: throw IOException("No data")
+            val takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            context.contentResolver.takePersistableUriPermission(uri, takeFlags)
+            Configs.storageDirectory = uri.toString()
+            Log.i(TAG, "Storage directory: ${uri.path}")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error when requesting saving directory", e)
+            scope.launch { snackbarHost.showSnackbar(errorText) }
+        }
     }
-            AnywhereDropdown(
-                        expanded = false,
-                        onDismissRequest = { },
-                        onClick = {
-                            launcher.launch(Intent(Intent.ACTION_OPEN_DOCUMENT_TREE))
-                },
-                        surface = {
-                            SettingsItem(
-                                        title = stringResource(R.string.settings_storage_directory),
-                                        desc = Configs.storageDirectory ?: "undefined",
-                                        icon = Icons.Outlined.Folder
-                            )
-
+    SettingsItem(
+        title = stringResource(R.string.settings_storage_directory),
+        desc = Configs.storageDirectory ?: "undefined",
+        icon = Icons.Outlined.Folder,
+        modifier = Modifier.clickable { launcher.launch(Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)) }
+    )
 }
