@@ -249,7 +249,7 @@ private fun DetailPatchLogs() {
 }
 
 @Composable
-private fun StorageDirectory() {
+fun StorageDirectory() {
     val context = LocalContext.current
     val snackbarHost = LocalSnackbarHost.current
     val scope = rememberCoroutineScope()

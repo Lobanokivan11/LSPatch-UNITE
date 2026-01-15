@@ -46,6 +46,7 @@ import org.lsposed.lspatch.util.ShizukuApi
 import org.lsposed.lspatch.util.DhizukuApi
 import rikka.shizuku.Shizuku
 import com.rosan.dhizuku.api.Dhizuku
+import com.rosan.dhizuku.api.DhizukuRequestPermissionListener
 
 @OptIn(ExperimentalMaterial3Api::class)
 @RootNavGraph(start = true)
@@ -93,7 +94,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
 
 private val listener: (Int, Int) -> Unit = { _, grantResult ->
     ShizukuApi.isPermissionGranted = grantResult == PackageManager.PERMISSION_GRANTED
-    DhizukuApi.isPermissionGranted = grantResult == PackageManager.PERMISSION_GRANTED
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -163,7 +163,7 @@ private fun ShizukuCard() {
 private fun DhizukuCard() {
     val listener = object : DhizukuRequestPermissionListener {
         override fun onRequestPermission(result: Int) {
-            DhizukuApi.isPermissionGranted = (result == Dhizuku.REQUEST_PERMISSION_RESULT_OK)
+            DhizukuApi.isPermissionGranted = (result == PackageManager.PERMISSION_GRANTED)
         }
     }
 
@@ -204,10 +204,6 @@ private fun DhizukuCard() {
                         style = MaterialTheme.typography.titleMedium
                     )
                     Spacer(Modifier.height(4.dp))
-                    Text(
-                        text = "API " + Dhizuku.getVersion(),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
                 }
             } else {
                 Icon(Icons.Outlined.Warning, stringResource(R.string.dhizuku_unavailable))

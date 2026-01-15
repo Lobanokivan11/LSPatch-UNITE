@@ -56,7 +56,6 @@ import org.lsposed.lspatch.ui.viewmodel.NewPatchViewModel.ViewAction
 import org.lsposed.lspatch.util.LSPPackageManager
 import org.lsposed.lspatch.util.LSPPackageManager.AppInfo
 import org.lsposed.lspatch.util.LSPPackageManagerDhizuku
-import org.lsposed.lspatch.util.LSPPackageManagerDhizuku.AppInfo
 import org.lsposed.lspatch.util.ShizukuApi
 import org.lsposed.lspatch.util.DhizukuApi
 
@@ -523,7 +522,7 @@ private fun DoPatchBody(modifier: Modifier, navigator: DestinationsNavigator) {
 }
 
 @Composable
-private fun InstallDialogShizuku(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
+fun InstallDialog(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
     val scope = rememberCoroutineScope()
     var uninstallFirst by remember { mutableStateOf(ShizukuApi.isPackageInstalledWithoutPatch(patchApp.app.packageName)) }
     var installing by remember { mutableStateOf(0) }
@@ -599,7 +598,7 @@ private fun InstallDialogShizuku(patchApp: AppInfo, onFinish: (Int, String?) -> 
 }
 
 @Composable
-private fun InstallDialogDhizuku(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
+fun InstallDialogDhizuku(patchApp: AppInfo, onFinish: (Int, String?) -> Unit) {
     val scope = rememberCoroutineScope()
     var uninstallFirst by remember { mutableStateOf(DhizukuApi.isPackageInstalledWithoutPatch(patchApp.app.packageName)) }
     var installing by remember { mutableStateOf(0) }
