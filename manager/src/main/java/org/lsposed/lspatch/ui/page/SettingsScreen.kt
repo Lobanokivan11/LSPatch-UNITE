@@ -261,9 +261,9 @@ fun StorageDirectory() {
             val takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
             context.contentResolver.takePersistableUriPermission(uri, takeFlags)
             Configs.storageDirectory = uri.toString()
-            Log.i(TAG, "Storage directory: ${uri.path}")
+            Log.i("LSPatch", "Storage directory: ${uri.path}")
         } catch (e: Exception) {
-            Log.e(TAG, "Error when requesting saving directory", e)
+            Log.e("LSPatch", "Error when requesting saving directory", e)
             scope.launch { snackbarHost.showSnackbar(errorText) }
         }
     }

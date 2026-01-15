@@ -161,7 +161,7 @@ private fun ShizukuCard() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DhizukuCard() {
-    val listener = object : DhizukuRequestPermissionListener {
+    val listener = object : DhizukuRequestPermissionListener() {
         override fun onRequestPermission(result: Int) {
             DhizukuApi.isPermissionGranted = (result == PackageManager.PERMISSION_GRANTED)
         }
